@@ -45,10 +45,28 @@ namespace Text_Editor
             }
         }
 
+        //otvaranje tekst fajla
+        public void openD()
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Text File|*.txt|All Files|*.*";
+            open.Title = "Open";
+            open.ShowDialog();
+
+            if (open.FileName != "")
+            {
+                textBox1.Text = File.ReadAllText(open.FileName);
+                savePath = open.FileName;
+            }
+        }
+
         //file menu exit
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (promptExit())
+            {
+                Application.ExitThread();
+            }
         }
 
         //file menu new
@@ -73,16 +91,7 @@ namespace Text_Editor
         //otvaranje tekst dokumenta
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Text File|*.txt|All Files|*.*";
-            open.Title = "Open";
-            open.ShowDialog();
-
-            if (open.FileName != "")
-            {
-                textBox1.Text = File.ReadAllText(open.FileName);
-                savePath = open.FileName;
-            }
+            openD();
         }
 
         //word wrap funkcija
@@ -91,83 +100,26 @@ namespace Text_Editor
             if (textBox1.WordWrap == false)
             {
                 textBox1.WordWrap = true;
-                textBox1.ScrollBars = ScrollBars.Vertical;
                 wordWrapToolStripMenuItem.Checked = true;
             }
             else
             {
                 textBox1.WordWrap = false;
-                textBox1.ScrollBars = ScrollBars.Both;
                 wordWrapToolStripMenuItem.Checked = false;
             }
         }
 
         //stampanje
-        private StreamReader streamToPrint;
+        public void printD()
+        {
+            //PrintDialog print = new PrintDialog();
+            printDialog1.ShowDialog();
+        }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PrintDialog print = new PrintDialog();
-            print.ShowDialog();
-
-            /*if (savePath == "")
-            {
-                MessageBox.Show("Save the current file or open an existing file!", "Error");
-            }
-            else
-            {
-                try
-                {
-                    streamToPrint = new StreamReader(savePath);
-                    try
-                    {
-                        PrintDocument pd = new PrintDocument();
-                        pd.PrintPage += new PrintPageEventHandler(this.pd_PrintPage);
-                        pd.Print();
-                    }
-                    finally
-                    {
-                        streamToPrint.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }*/
+            printD();
         }
-
-        /*private void pd_PrintPage(object sender, PrintPageEventArgs ev)
-        {
-            float linesPerPage = 0;
-            float yPos = 0;
-            int count = 0;
-            float leftMargin = ev.MarginBounds.Left;
-            float topMargin = ev.MarginBounds.Top;
-            string line = null;
-
-            // Calculate the number of lines per page.
-            linesPerPage = ev.MarginBounds.Height /
-               font.GetHeight(ev.Graphics);
-
-            // Print each line of the file.
-            while (count < linesPerPage &&
-               ((line = streamToPrint.ReadLine()) != null))
-            {
-                yPos = topMargin + (count *
-                   font.GetHeight(ev.Graphics));
-                ev.Graphics.DrawString(line, font, Brushes.Black,
-                   leftMargin, yPos, new StringFormat());
-                count++;
-            }
-
-            // If more lines exist, print another page.
-            if (line != null)
-                ev.HasMorePages = true;
-            else
-                ev.HasMorePages = false;
-        }*/
-        //kraj stampanja
 
         //biranje fonta
         private void fontToolStripMenuItem_Click(object sender, EventArgs e)
@@ -181,13 +133,65 @@ namespace Text_Editor
             }
         }
 
-        //ovo treba da bude ctrl + s, ali ne radi
+        //pita da li zeli da sacuva
+        private bool promptExit()
+        {
+            if (textBox1.Text == "")
+            {
+                return true;
+            }
+            DialogResult result = MessageBox.Show("Exiting will discart any unsaved changes. Do you wish to save?", "Text Editor", MessageBoxButtons.YesNoCancel);
+
+            if (result == DialogResult.Yes)
+            {
+                saveD(false);
+                return true;
+            }
+            else if (result == DialogResult.No)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!promptExit())
+            {
+                e.Cancel = true;
+            }
+        }
+
+        //key combinations
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(Control.ModifierKeys == Keys.Control && Control.ModifierKeys == Keys.S)
+            if (e.Control && e.KeyCode == Keys.S)
             {
                 saveD(false);
             }
+            if (e.Control && e.KeyCode == Keys.O)
+            {
+                openD();
+            }
+            if (e.Control && e.KeyCode == Keys.N)
+            {
+                textBox1.Clear();
+                savePath = "";
+            }
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                printD();
+            }
+        }
+
+        //otvaranje forme about
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About form = new About();
+            form.ShowDialog();
         }
     }
 }
