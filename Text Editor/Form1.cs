@@ -26,7 +26,7 @@ namespace Text_Editor
             if (savePath == "" || prompt == true)
             {
                 SaveFileDialog save = new SaveFileDialog();
-                save.Filter = "Text File|*.txt|All Files|*.*";
+                save.Filter = "Text File|*.txt|Config File|*.cfg|Log File|*.log|HTML File|*.html|CSS File|*.css|CSV File|*.csv|INI File|*.ini|JSON File|*.json|TSV File|*.tsv|XML File|*.xml|YAML File|*.yaml|All Files|*.*";
                 save.Title = "Save";
                 save.ShowDialog();
 
@@ -49,7 +49,7 @@ namespace Text_Editor
         public void openD()
         {
             OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Text File|*.txt|All Files|*.*";
+            open.Filter = "Text File|*.txt|Config File|*.cfg|Log File|*.log|HTML File|*.html|CSS File|*.css|CSV File|*.csv|INI File|*.ini|JSON File|*.json|TSV File|*.tsv|XML File|*.xml|YAML File|*.yaml|All Files|*.*";
             open.Title = "Open";
             open.ShowDialog();
 
@@ -157,6 +157,7 @@ namespace Text_Editor
             }
         }
 
+        //poruka na zatvaranju programa
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!promptExit())
@@ -164,6 +165,23 @@ namespace Text_Editor
                 e.Cancel = true;
             }
         }
+
+        //otvaranje forme about
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About form = new About();
+            form.ShowDialog();
+        }
+
+        //otvaranje forme find
+        private void findToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Find form = new Find();
+            form.ShowDialog();
+        }
+
+        //funkcija koja daje da se richtextbox koristi u drugim formama
+        public RichTextBox textBoxPublic { get { return textBox1; } }
 
         //key combinations
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -185,13 +203,11 @@ namespace Text_Editor
             {
                 printD();
             }
-        }
-
-        //otvaranje forme about
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            About form = new About();
-            form.ShowDialog();
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                Find form = new Find();
+                form.ShowDialog();
+            }
         }
     }
 }

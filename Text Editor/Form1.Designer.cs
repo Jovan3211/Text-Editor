@@ -161,6 +161,7 @@
             this.findToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+F";
             this.findToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.findToolStripMenuItem.Text = "Find...";
+            this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
             // 
             // replaceToolStripMenuItem
             // 

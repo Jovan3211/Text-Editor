@@ -28,3 +28,18 @@ D:\Programming\Text Editor\Text Editor\bin\Debug\Text Editor.application
 D:\Programming\Text Editor\Text Editor\obj\Debug\Text Editor.TrustInfo.xml
 D:\Programming\Text Editor\Text Editor\obj\Debug\Text Editor.exe.manifest
 D:\Programming\Text Editor\Text Editor\obj\Debug\Text Editor.application
+D:\Programming\Text-Editor\Text Editor\obj\Debug\Text Editor.exe
+D:\Programming\Text-Editor\Text Editor\obj\Debug\Text Editor.pdb
+D:\Programming\Text-Editor\Text Editor\bin\Debug\Text Editor.exe.manifest
+D:\Programming\Text-Editor\Text Editor\bin\Debug\Text Editor.application
+D:\Programming\Text-Editor\Text Editor\bin\Debug\Text Editor.exe
+D:\Programming\Text-Editor\Text Editor\bin\Debug\Text Editor.pdb
+D:\Programming\Text-Editor\Text Editor\obj\Debug\Text Editor.csprojResolveAssemblyReference.cache
+D:\Programming\Text-Editor\Text Editor\obj\Debug\Text_Editor.About.resources
+D:\Programming\Text-Editor\Text Editor\obj\Debug\Text_Editor.Form1.resources
+D:\Programming\Text-Editor\Text Editor\obj\Debug\Text_Editor.Properties.Resources.resources
+D:\Programming\Text-Editor\Text Editor\obj\Debug\Text Editor.csproj.GenerateResource.Cache
+D:\Programming\Text-Editor\Text Editor\obj\Debug\Text Editor.TrustInfo.xml
+D:\Programming\Text-Editor\Text Editor\obj\Debug\Text Editor.exe.manifest
+D:\Programming\Text-Editor\Text Editor\obj\Debug\Text Editor.application
+D:\Programming\Text-Editor\Text Editor\obj\Debug\Text_Editor.Find.resources
