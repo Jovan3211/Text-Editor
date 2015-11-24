@@ -40,7 +40,7 @@
             this.textBox_search.Size = new System.Drawing.Size(245, 21);
             this.textBox_search.TabIndex = 0;
             this.textBox_search.WordWrap = false;
-            this.textBox_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_search_KeyPress);
+            this.textBox_search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_search_KeyDown);
             // 
             // label1
             // 
@@ -62,7 +62,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Find";
-            this.Opacity = 0.6D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

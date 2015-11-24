@@ -35,13 +35,10 @@ namespace Text_Editor
                     savePath = save.FileName;
                 }
             }
-            //ako filename nije prazan, da ga cuva
-            else if (savePath != "")
+            //cuvanje fajla
+            using (StreamWriter writer = new StreamWriter(savePath))
             {
-                using (StreamWriter writer = new StreamWriter(savePath))
-                {
-                    writer.Write(textBox1.Text);
-                }
+                writer.Write(textBox1.Text);
             }
         }
 
@@ -173,11 +170,19 @@ namespace Text_Editor
             form.ShowDialog();
         }
 
-        //otvaranje forme find
         private void findToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            findD();
+        }
+
+        //otvaranje forme find
+        private void findD()
+        {
             Find form = new Find();
+            textBoxPublic.Text = textBox1.Text;
+
             form.ShowDialog();
+            textBox1 = textBoxPublic;
         }
 
         //funkcija koja daje da se richtextbox koristi u drugim formama
@@ -205,8 +210,7 @@ namespace Text_Editor
             }
             if (e.Control && e.KeyCode == Keys.F)
             {
-                Find form = new Find();
-                form.ShowDialog();
+                findD();
             }
         }
     }

@@ -12,8 +12,9 @@ namespace Text_Editor
         }
 
         Form1 form1 = new Form1();
+        Find formf = new Find();
 
-        private void textBox_search_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBox_search_KeyDown(object sender, KeyEventArgs e)
         {
             int len = form1.textBoxPublic.TextLength;
             int index = 0;
@@ -29,12 +30,12 @@ namespace Text_Editor
 
         private void Find_MouseEnter(object sender, EventArgs e)
         {
-            form1.Opacity = 100;
+            formf.Opacity = .100;
         }
 
         private void Find_MouseLeave(object sender, EventArgs e)
         {
-            form1.Opacity = 60;
+            formf.Opacity = .60;
         }
     }
 }
