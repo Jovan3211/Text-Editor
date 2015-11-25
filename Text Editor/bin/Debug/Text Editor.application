@@ -4,14 +4,14 @@
   <description asmv2:publisher="Jovan" asmv2:product="Text Editor" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" co.v1:createDesktopShortcut="true" />
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Text Editor.exe.manifest" size="5559">
+    <dependentAssembly dependencyType="install" codebase="Text Editor.exe.manifest" size="5926">
       <assemblyIdentity name="Text Editor.exe" version="0.1.003.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>OQmReeZWP3GJaN3/0rJwu95qsTE=</dsig:DigestValue>
+        <dsig:DigestValue>tAzncXiF6lONNB5A6my5M9GryTE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

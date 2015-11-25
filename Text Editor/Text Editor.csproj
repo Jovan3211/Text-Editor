@@ -125,6 +125,7 @@
     <None Include="Text Editor_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Help.txt" />
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>

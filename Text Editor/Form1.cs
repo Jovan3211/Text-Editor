@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Text_Editor
 {
@@ -32,8 +33,7 @@ namespace Text_Editor
                 save.ShowDialog();
 
                 savePath = save.FileName;
-                Form1 form1 = new Form1();
-                form1.Text = Path.GetFileNameWithoutExtension(save.FileName);
+                this.Text = Path.GetFileName(save.FileName) + " - Text Editor";
             }
 
             //cuvanje fajla
@@ -58,8 +58,7 @@ namespace Text_Editor
             {
                 textBox1.Text = File.ReadAllText(open.FileName);
                 savePath = open.FileName;
-                Form1 form1 = new Form1();
-                form1.Text = Path.GetFileNameWithoutExtension(open.FileName);
+                this.Text = Path.GetFileName(open.FileName) + " - Text Editor";
             }
         }
 
@@ -77,8 +76,7 @@ namespace Text_Editor
         {
             textBox1.Clear();
             savePath = "";
-            Form1 form1 = new Form1();
-            form1.Text = "Text Editor";
+            this.Text = "Text Editor";
         }
 
         //file menu save
@@ -202,6 +200,19 @@ namespace Text_Editor
                 textBox1.Find(textBox_search.Text, index, len, RichTextBoxFinds.None);
                 textBox1.SelectionBackColor = Color.Yellow;
                 index = textBox1.Text.IndexOf(textBox_search.Text, index) + 1;
+            }
+        }
+
+        //otvaranje foldera gde se nalazi file
+        private void openFolderLocationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(savePath))
+            {
+                Process.Start("explorer", Path.GetDirectoryName(savePath));
+            }
+            else
+            {
+                MessageBox.Show("There is no file to open a location for!", "Error");
             }
         }
 

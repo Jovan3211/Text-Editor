@@ -58,17 +58,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Text Editor.exe" size="761232">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Text Editor.exe" size="761768">
       <assemblyIdentity name="Text Editor" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>KPqrteFAnPGy52bdL/fxcF6BXBw=</dsig:DigestValue>
+        <dsig:DigestValue>Nv/4HBdevU+Il8CGcsGbEoV8aBw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
+  <file name="Help.txt" size="196">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>FEdU3Mn/g4PPwKdbL+tK1wqq/FE=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="icon.ico" size="370070">
     <hash>
       <dsig:Transforms>
