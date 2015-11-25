@@ -22,23 +22,26 @@ namespace Text_Editor
         //funkcija za cuvanje fajlova; bool prompt je za 'save as', da se cuva pod drugim imenom.
         public void saveD(bool prompt)
         {
+            SaveFileDialog save = new SaveFileDialog();
+
             //ako fajl nije sacuvan da pita gde se cuva
             if (savePath == "" || prompt == true)
             {
-                SaveFileDialog save = new SaveFileDialog();
                 save.Filter = "Text File|*.txt|Config File|*.cfg|Log File|*.log|HTML File|*.html|CSS File|*.css|CSV File|*.csv|INI File|*.ini|JSON File|*.json|TSV File|*.tsv|XML File|*.xml|YAML File|*.yaml|All Files|*.*";
                 save.Title = "Save";
                 save.ShowDialog();
 
-                if (save.FileName != "")
-                {
-                    savePath = save.FileName;
+                savePath = save.FileName;
+                Form1 form1 = new Form1();
+                form1.Text = Path.GetFileNameWithoutExtension(save.FileName);
+            }
 
-                    //cuvanje fajla
-                    using (StreamWriter writer = new StreamWriter(savePath))
-                    {
-                        writer.Write(textBox1.Text);
-                    }
+            //cuvanje fajla
+            if (savePath != "")
+            {
+                using (StreamWriter writer = new StreamWriter(savePath))
+                {
+                    writer.Write(textBox1.Text);
                 }
             }
         }
@@ -55,6 +58,8 @@ namespace Text_Editor
             {
                 textBox1.Text = File.ReadAllText(open.FileName);
                 savePath = open.FileName;
+                Form1 form1 = new Form1();
+                form1.Text = Path.GetFileNameWithoutExtension(open.FileName);
             }
         }
 
@@ -72,6 +77,8 @@ namespace Text_Editor
         {
             textBox1.Clear();
             savePath = "";
+            Form1 form1 = new Form1();
+            form1.Text = "Text Editor";
         }
 
         //file menu save

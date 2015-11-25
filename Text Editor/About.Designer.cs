@@ -63,7 +63,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 16);
             this.label4.TabIndex = 4;
-            this.label4.Text = "v0.3.021";
+            this.label4.Text = "v0.3.022";
             // 
             // linkLabel1
             // 
@@ -98,7 +98,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(377, 212);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(377, 212);
             this.Name = "About";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
