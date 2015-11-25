@@ -40,7 +40,6 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.getDateAndTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +53,11 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.textBox1 = new System.Windows.Forms.RichTextBox();
+            this.textBox_search = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +70,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(526, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(671, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -134,7 +138,9 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.undoToolStripMenuItem,
             this.redoToolStripMenuItem,
-            this.findToolStripMenuItem,
+            this.cutToolStripMenuItem,
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem,
             this.replaceToolStripMenuItem,
             this.getDateAndTimeToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
@@ -147,6 +153,7 @@
             this.undoToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Z";
             this.undoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.undoToolStripMenuItem.Text = "Undo";
+            this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // redoToolStripMenuItem
             // 
@@ -154,14 +161,7 @@
             this.redoToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Y";
             this.redoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.redoToolStripMenuItem.Text = "Redo";
-            // 
-            // findToolStripMenuItem
-            // 
-            this.findToolStripMenuItem.Name = "findToolStripMenuItem";
-            this.findToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+F";
-            this.findToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.findToolStripMenuItem.Text = "Find...";
-            this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
+            this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // replaceToolStripMenuItem
             // 
@@ -188,14 +188,14 @@
             // wordWrapToolStripMenuItem
             // 
             this.wordWrapToolStripMenuItem.Name = "wordWrapToolStripMenuItem";
-            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.wordWrapToolStripMenuItem.Text = "Word Wrap";
             this.wordWrapToolStripMenuItem.Click += new System.EventHandler(this.wordWrapToolStripMenuItem_Click);
             // 
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fontToolStripMenuItem.Text = "Font...";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
@@ -211,13 +211,13 @@
             // viewHelpToolStripMenuItem
             // 
             this.viewHelpToolStripMenuItem.Name = "viewHelpToolStripMenuItem";
-            this.viewHelpToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.viewHelpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.viewHelpToolStripMenuItem.Text = "View Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -231,6 +231,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.AcceptsTab = true;
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -239,22 +240,65 @@
             this.textBox1.Location = new System.Drawing.Point(0, 22);
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.textBox1.Size = new System.Drawing.Size(526, 322);
+            this.textBox1.Size = new System.Drawing.Size(671, 435);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "";
             this.textBox1.WordWrap = false;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
+            // textBox_search
+            // 
+            this.textBox_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_search.Location = new System.Drawing.Point(499, 2);
+            this.textBox_search.Name = "textBox_search";
+            this.textBox_search.Size = new System.Drawing.Size(172, 20);
+            this.textBox_search.TabIndex = 2;
+            this.textBox_search.WordWrap = false;
+            this.textBox_search.TextChanged += new System.EventHandler(this.textBox_search_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(452, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Search:";
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            this.cutToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+X";
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.cutToolStripMenuItem.Text = "Cut";
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+V";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 343);
+            this.ClientSize = new System.Drawing.Size(671, 456);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox_search);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(203, 87);
+            this.MinimumSize = new System.Drawing.Size(432, 87);
             this.Name = "Form1";
             this.Text = "Text Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -288,10 +332,14 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem getDateAndTimeToolStripMenuItem;
         private System.Windows.Forms.RichTextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_search;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
     }
 }
 

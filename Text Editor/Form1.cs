@@ -33,12 +33,13 @@ namespace Text_Editor
                 if (save.FileName != "")
                 {
                     savePath = save.FileName;
+
+                    //cuvanje fajla
+                    using (StreamWriter writer = new StreamWriter(savePath))
+                    {
+                        writer.Write(textBox1.Text);
+                    }
                 }
-            }
-            //cuvanje fajla
-            using (StreamWriter writer = new StreamWriter(savePath))
-            {
-                writer.Write(textBox1.Text);
             }
         }
 
@@ -89,6 +90,18 @@ namespace Text_Editor
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openD();
+        }
+
+        //undo
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Undo();
+        }
+        
+        //redo
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Redo();
         }
 
         //word wrap funkcija
@@ -170,23 +183,20 @@ namespace Text_Editor
             form.ShowDialog();
         }
 
-        private void findToolStripMenuItem_Click(object sender, EventArgs e)
+        //search funkcija
+        private void textBox_search_TextChanged(object sender, EventArgs e)
         {
-            findD();
+            int len = textBox1.TextLength;
+            int index = 0;
+            int lastIndex = textBox1.Text.LastIndexOf(textBox_search.Text, StringComparison.OrdinalIgnoreCase);
+
+            while (index <= lastIndex)
+            {
+                textBox1.Find(textBox_search.Text, index, len, RichTextBoxFinds.None);
+                textBox1.SelectionBackColor = Color.Yellow;
+                index = textBox1.Text.IndexOf(textBox_search.Text, index) + 1;
+            }
         }
-
-        //otvaranje forme find
-        private void findD()
-        {
-            Find form = new Find();
-            textBoxPublic.Text = textBox1.Text;
-
-            form.ShowDialog();
-            textBox1 = textBoxPublic;
-        }
-
-        //funkcija koja daje da se richtextbox koristi u drugim formama
-        public RichTextBox textBoxPublic { get { return textBox1; } }
 
         //key combinations
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -207,10 +217,6 @@ namespace Text_Editor
             if (e.Control && e.KeyCode == Keys.P)
             {
                 printD();
-            }
-            if (e.Control && e.KeyCode == Keys.F)
-            {
-                findD();
             }
         }
     }
