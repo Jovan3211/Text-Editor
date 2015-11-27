@@ -112,6 +112,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -125,7 +126,6 @@
     <None Include="Text Editor_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Help.txt" />
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>

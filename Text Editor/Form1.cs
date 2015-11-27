@@ -109,6 +109,31 @@ namespace Text_Editor
             textBox1.Redo();
         }
 
+        //cut
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Cut();
+        }
+
+        //copy
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Copy();
+        }
+
+        //uzimanje trenutnog datuma i sati i stavljanje u tekst
+        private void getDateAndTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+            textBox1.SelectedText = now.ToString();
+        }
+
+        //paste
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Paste();
+        }
+
         //word wrap funkcija
         private void wordWrapToolStripMenuItem_Click(object sender, EventArgs e)
         {
