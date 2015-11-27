@@ -4,6 +4,7 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Text;
 
 namespace Text_Editor
 {
@@ -18,6 +19,30 @@ namespace Text_Editor
             InitializeComponent();
             savePath = "";
             Font = textBox1.Font;
+        }
+
+        //otvaranje sa ekstenzije ako se dvoklikne na fajl (nemam pojma kako ovo radi; copy/paste sa stackoverflow-a)
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            string[] args = System.Environment.GetCommandLineArgs();
+            string filePath = args[0];
+            for (int i = 0; i <= args.Length - 1; i++)
+            {
+                if (args[i].EndsWith(".exe") == false)
+                {
+                    textBox1.Text = System.IO.File.ReadAllText(args[i],
+                    Encoding.Default);
+                }
+            }
+        }
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            string[] args = System.Environment.GetCommandLineArgs();
+            string filePath = args[0];
+        }
+        public sealed class StartupEventArgs : EventArgs
+        {
+
         }
 
         //funkcija za cuvanje fajlova; bool prompt je za 'save as', da se cuva pod drugim imenom.

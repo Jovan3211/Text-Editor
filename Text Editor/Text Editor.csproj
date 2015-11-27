@@ -25,7 +25,7 @@
     <ProductName>Text Editor</ProductName>
     <PublisherName>Jovan</PublisherName>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>0.1.003.%2a</ApplicationVersion>
+    <ApplicationVersion>0.4.000.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
