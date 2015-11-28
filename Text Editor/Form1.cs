@@ -13,6 +13,7 @@ namespace Text_Editor
         //deklaracije
         Font font;
         string savePath;
+        bool textChanged;
 
         public Form1()
         {
@@ -64,6 +65,7 @@ namespace Text_Editor
             //cuvanje fajla
             if (savePath != "")
             {
+                textChanged = false;
                 using (StreamWriter writer = new StreamWriter(savePath))
                 {
                     writer.Write(textBox1.Text);
@@ -84,7 +86,29 @@ namespace Text_Editor
                 textBox1.Text = File.ReadAllText(open.FileName);
                 savePath = open.FileName;
                 this.Text = Path.GetFileName(open.FileName) + " - Text Editor";
+                textChanged = false;
             }
+        }
+
+        //prikazivanje trenutne pozicije u status bar
+        private void textBox1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (statusBarToolStripMenuItem.Checked)
+            {
+                int line = textBox1.GetLineFromCharIndex(textBox1.SelectionStart);
+                int column = textBox1.SelectionStart - textBox1.GetFirstCharIndexFromLine(line);
+
+                line += 1; column += 1;
+
+                statusStrip_label_line.Text = "Ln: " + line.ToString();
+                statusStrip_label_column.Text = "Col: " + column.ToString();
+            }
+        }
+
+        //gleda ako se tekst promenio da bi se gledalo da li da daje promptExit() na izlazu.
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            textChanged = true;
         }
 
         //file menu exit
@@ -198,14 +222,36 @@ namespace Text_Editor
             }
         }
 
+        //view status bar
+        private void statusBarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (statusBarToolStripMenuItem.Checked)
+            {
+                statusStrip1.Visible = false;
+                textBox1.Height += 23;
+                statusBarToolStripMenuItem.Checked = false;
+            }
+            else if (!statusBarToolStripMenuItem.Checked)
+            {
+                statusStrip1.Visible = true;
+                textBox1.Height -= 23;
+                statusBarToolStripMenuItem.Checked = true;
+            }
+        }
+
         //pita da li zeli da sacuva
         private bool promptExit()
         {
-            if (textBox1.Text == "")
+            DialogResult result;
+
+            if (textBox1.Text == "" || !textChanged)
             {
                 return true;
             }
-            DialogResult result = MessageBox.Show("Exiting will discart any unsaved changes. Do you wish to save?", "Text Editor", MessageBoxButtons.YesNoCancel);
+            else
+            {
+                result = MessageBox.Show("Exiting will discart any unsaved changes. Do you wish to save?", "Text Editor", MessageBoxButtons.YesNoCancel);
+            }
 
             if (result == DialogResult.Yes)
             {
