@@ -198,6 +198,13 @@ namespace Text_Editor
             }
         }
 
+        //otvaranje forme za zamenu reci/slova/recenica
+        private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            replace form = new replace();
+            form.ShowDialog();
+        }
+
         //stampanje
         public void printD()
         {
@@ -331,6 +338,11 @@ namespace Text_Editor
             if (e.Control && e.KeyCode == Keys.P)
             {
                 printD();
+            }
+            if (e.Control && e.KeyCode == Keys.H)
+            {
+                replace rep = new replace();
+                rep.ShowDialog();
             }
         }
     }

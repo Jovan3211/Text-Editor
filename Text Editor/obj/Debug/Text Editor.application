@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Text Editor.exe.manifest" size="5222">
+    <dependentAssembly dependencyType="install" codebase="Text Editor.exe.manifest" size="5223">
       <assemblyIdentity name="Text Editor.exe" version="0.4.021.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>k67Q9hPTZC8+GepTQHrISrIyqH9kqFxAvknMG+Bz7UU=</dsig:DigestValue>
+        <dsig:DigestValue>CFBstv6+E9Q9jWhOVgnaftKLA/lojx9ZDYqB1E9/gGM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

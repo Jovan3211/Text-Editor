@@ -43,3 +43,4 @@ D:\Programming\Text Editor\Text Editor\obj\Debug\Text Editor.TrustInfo.xml
 D:\Programming\Text Editor\Text Editor\obj\Debug\Text Editor.exe.manifest
 D:\Programming\Text Editor\Text Editor\obj\Debug\Text Editor.application
 D:\Programming\Text Editor\Text Editor\bin\Debug\Text Editor.exe.config
+D:\Programming\Text Editor\Text Editor\obj\Debug\Text_Editor.replace.resources
