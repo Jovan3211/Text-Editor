@@ -41,10 +41,7 @@ namespace Text_Editor
             string[] args = System.Environment.GetCommandLineArgs();
             string filePath = args[0];
         }
-        public sealed class StartupEventArgs : EventArgs
-        {
-
-        }
+        public sealed class StartupEventArgs : EventArgs{}
 
         //funkcija za cuvanje fajlova; bool prompt je za 'save as', da se cuva pod drugim imenom.
         public void saveD(bool prompt)
@@ -105,6 +102,14 @@ namespace Text_Editor
             }
         }
 
+        //create new file
+        private void newD()
+        {
+            textBox1.Clear();
+            savePath = "";
+            this.Text = "Text Editor";
+        }
+
         //gleda ako se tekst promenio da bi se gledalo da li da daje promptExit() na izlazu.
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -123,9 +128,7 @@ namespace Text_Editor
         //file menu new
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            savePath = "";
-            this.Text = "Text Editor";
+            newD();
         }
 
         //file menu save
@@ -208,8 +211,15 @@ namespace Text_Editor
         //stampanje
         public void printD()
         {
-            //PrintDialog print = new PrintDialog();
-            printDialog1.ShowDialog();
+            PrintDialog printDlg = new PrintDialog();
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.DocumentName = "Print Document";
+            printDlg.Document = printDoc;
+            printDlg.AllowSelection = true;
+            printDlg.AllowSomePages = true;
+            //Call ShowDialog
+            if (printDlg.ShowDialog() == DialogResult.OK)
+                printDoc.Print();
         }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
@@ -332,8 +342,7 @@ namespace Text_Editor
             }
             if (e.Control && e.KeyCode == Keys.N)
             {
-                textBox1.Clear();
-                savePath = "";
+                newD();
             }
             if (e.Control && e.KeyCode == Keys.P)
             {
